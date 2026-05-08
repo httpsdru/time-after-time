@@ -1,0 +1,130 @@
+.menu {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 5rem 1.5rem 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+.menu--empty {
+  align-items: center;
+  justify-items: center;
+  padding: 8rem 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .menu {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 2rem;
+    padding: 6rem 2rem 0;
+  }
+}
+
+/* ----- list ----- */
+
+.menu__list {
+  list-style: none;
+  padding-left: 1.2em;
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  line-height: 1.05;
+  /* Add a bunch of bottom padding so the last item can still center on screen */
+  padding-bottom: 60vh;
+}
+
+.menu__list li {
+  position: relative;
+}
+
+.menu__item {
+  background: none;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: var(--fg);
+  display: block;
+  width: 100%;
+  padding: 0.05em 0;
+  opacity: 0.55;
+  transition: opacity 0.25s ease;
+}
+
+.menu__item:hover {
+  opacity: 0.85;
+}
+
+.menu__item.is-active {
+  opacity: 1;
+}
+
+.menu__item-marker {
+  position: absolute;
+  left: -1.1em;
+  top: 0.05em;
+  font-size: 0.55em;
+  line-height: 1.1;
+}
+
+.menu__item-name {
+  display: inline;
+}
+
+.menu__item-price {
+  font-size: 0.5em;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 0.4em;
+}
+
+/* ----- detail panel (sticky photo) ----- */
+
+.menu__detail {
+  position: sticky;
+  top: 6rem;
+  align-self: start;
+  height: fit-content;
+}
+
+.menu__photo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.menu__photo img,
+.menu__photo .placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.menu__photo figcaption {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--fg);
+}
+
+/* On mobile the photo floats next to the active item, like the mockup. */
+@media (max-width: 899px) {
+  .menu__detail {
+    position: fixed;
+    top: 38vh;
+    right: 0;
+    width: 48vw;
+    max-width: 240px;
+    z-index: 4;
+    pointer-events: none;
+  }
+  .menu__photo {
+    max-width: none;
+  }
+  .menu__photo img,
+  .menu__photo .placeholder {
+    aspect-ratio: 1 / 1;
+  }
+  .menu__photo figcaption {
+    font-size: 0.8rem;
+  }
+}

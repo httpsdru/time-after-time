@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "name": "orange juice",
+      "price": 8,
+      "image": "/images/drink-orange-juice.jpg",
+      "caption": "fresh squeezed orange juice"
+    },
+    {
+      "name": "filter coffee",
+      "price": 6,
+      "image": "/images/drink-filter.jpg",
+      "caption": "single-origin filter"
+    },
+    {
+      "name": "espresso",
+      "price": 5,
+      "image": "/images/drink-espresso.jpg",
+      "caption": "double shot espresso"
+    },
+    {
+      "name": "flat white",
+      "price": 6,
+      "image": "/images/drink-flat-white.jpg",
+      "caption": "flat white"
+    },
+    {
+      "name": "latte",
+      "price": 6,
+      "image": "/images/drink-latte.jpg",
+      "caption": "latte"
+    },
+    {
+      "name": "cappuccino",
+      "price": 6,
+      "image": "/images/drink-cappuccino.jpg",
+      "caption": "cappuccino"
+    },
+    {
+      "name": "matcha",
+      "price": 7,
+      "image": "/images/drink-matcha.jpg",
+      "caption": "ceremonial matcha"
+    },
+    {
+      "name": "hot chocolate",
+      "price": 7,
+      "image": "/images/drink-hot-chocolate.jpg",
+      "caption": "single-origin hot chocolate"
+    },
+    {
+      "name": "sparkling water",
+      "price": 6,
+      "image": "/images/drink-sparkling.jpg",
+      "caption": "sparkling water"
+    }
+  ]
+}

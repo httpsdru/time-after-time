@@ -1,0 +1,84 @@
+# Decap CMS configuration for time after time.
+# The client logs in at /admin/ via Netlify Identity. Edits commit to git
+# and Netlify rebuilds & redeploys the site automatically.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded photos go. media_folder is the path in the repo;
+# public_folder is the URL prefix used in the JSON files.
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+# Drafts -> review -> publish workflow. Comment this line out for
+# instant publish if the client doesn't want it.
+publish_mode: editorial_workflow
+
+# Local backend lets you run the CMS against localhost during dev with
+#   npx decap-server
+# (See README.) Toggled on automatically when host is localhost.
+local_backend: true
+
+site_url: https://example.netlify.app
+display_url: https://example.netlify.app
+logo_url: ""
+
+collections:
+  # ---------------- Menu items ----------------
+  - name: "menu"
+    label: "Menu items"
+    label_singular: "Menu item"
+    folder: "src/content/menu"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    identifier_field: "name"
+    summary: "{{name}}  ·  ${{price}}  ·  {{category}}"
+    sortable_fields: ["category", "order", "name", "price"]
+    fields:
+      - { label: "Name", name: "name", widget: "string", hint: "Lowercase, e.g. 'french toast'" }
+      - { label: "Price", name: "price", widget: "number", value_type: "float", min: 0, step: 0.5 }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["food", "drink"]
+        default: "food"
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 100, hint: "Lower numbers appear first within their category" }
+      - { label: "Photo", name: "image", widget: "image", required: false, allow_multiple: false, choose_url: false, hint: "Recommended ~1600px wide" }
+      - { label: "Description", name: "description", widget: "text", required: false, hint: "Short — what's in it (e.g. 'brioche, vanilla custard, maple')" }
+      - { label: "ID", name: "id", widget: "string", required: false, hint: "Unique slug. Leave blank to auto-generate." }
+
+  # ---------------- Home gallery ----------------
+  - name: "gallery"
+    label: "Home gallery"
+    label_singular: "Gallery photo"
+    folder: "src/content/gallery"
+    create: true
+    delete: true
+    slug: "{{order}}-{{slug}}"
+    extension: "json"
+    format: "json"
+    identifier_field: "alt"
+    summary: "#{{order}}  ·  {{alt}}"
+    sortable_fields: ["order"]
+    fields:
+      - { label: "Image", name: "image", widget: "image", hint: "Recommended ~2000px wide. Will be cropped to fill the screen." }
+      - { label: "Alt text", name: "alt", widget: "string", hint: "Describe the photo for screen readers" }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", default: 100, hint: "Lower numbers appear first" }
+
+  # ---------------- Site info ----------------
+  - name: "site"
+    label: "Site info"
+    files:
+      - file: "src/content/site.json"
+        label: "Site info"
+        name: "site"
+        extension: "json"
+        format: "json"
+        fields:
+          - { label: "Hours", name: "hours", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string" }

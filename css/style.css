@@ -1,0 +1,319 @@
+/* time after time — main stylesheet
+   font: TimesNewRoman everywhere
+   palette: warm cream background, black ink */
+ 
+@font-face {
+  font-family: "TimesNewRoman";
+  src: url("../assets/fonts/TimesNewRoman.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+:root {
+  --bg: #ece8df;
+  --fg: #111;
+  --muted: #ece8df;
+  --header-pad-x: 3rem;
+  --header-pad-y: 1.5rem;
+  --footer-h-desktop: 18vh;
+  --footer-h-mobile: 14vh;
+}
+ 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "TimesNewRoman", Times, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ 
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-size: 18px;
+  line-height: 1.4;
+}
+ 
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ 
+/* ---------- Site header ---------- */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+  padding: var(--header-pad-y) var(--header-pad-x);
+  background: transparent;
+  font-size: 1.6rem;
+  letter-spacing: -0.06em;
+  pointer-events: none;
+}
+.site-header > div { pointer-events: auto; }
+.site-header .left  { justify-self: start; }
+.site-header .center { justify-self: center; text-align: center; }
+.site-header .right { justify-self: end; text-align: right; }
+.site-header a { display: inline-block; }
+.site-header a:hover { font-style: italic; }
+ 
+body.home .site-header { color: #fff; }
+body.menu .site-header { color: #111; }
+ 
+/* ---------- Big locked title ---------- */
+.big-title {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 50;
+  pointer-events: none;
+  font-size: 21.5vw;
+  line-height: 0.85;
+  letter-spacing: -0.10em;
+  user-select: none;
+  text-align: center;
+}
+body.home .big-title { color: #fff; }
+body.menu .big-title { color: #111; }
+ 
+.big-title .line {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  white-space: nowrap;
+}
+.big-title .line.extra { display: none; }
+ 
+/* ---------- Main content ---------- */
+main {
+  position: relative;
+  z-index: 1;
+  padding-top: 5rem;
+  padding-bottom: var(--footer-h-desktop);
+}
+ 
+/* ---------- Home: infinite hero scroll ---------- */
+.hero-scroll { display: flex; flex-direction: column; gap: 0; }
+.hero-scroll figure { width: 100%; height: 100vh; position: relative; overflow: hidden; }
+.hero-scroll figure img { width: 100%; height: 100%; object-fit: cover; }
+.hero-scroll .placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: #d8d2c4; color: #ece8df;
+  font-size: 1rem; font-style: italic;
+}
+ 
+/* ---------- Info overlay (home page) ---------- */
+.info-overlay {
+  position: fixed;
+  top: 45%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 60;                  /* above big-title (z:50) */
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+  background: #fff;             /* one solid block under all lines */
+  padding: 0.15em 0.45em;
+  display: inline-block;
+}
+.info-overlay span {
+  display: block;               /* one line each, no per-span box */
+  background: transparent;
+  padding: 0;
+  white-space: nowrap;          /* never wrap mid-line */
+}
+ 
+/* ---------- Menu page ---------- */
+.menu-wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4rem;
+  padding: 5rem var(--header-pad-x) 0;
+  align-items: start;
+}
+ 
+.menu-list {
+  list-style: none;
+  font-size: 2rem;
+  line-height: 1.45;
+  letter-spacing: -.8px;
+  position: relative;
+  padding-left: 2.2rem;
+}
+.menu-list li { position: relative; cursor: default; transition: opacity 0.2s ease; }
+.menu-list li .price { font-size: 0.55em; vertical-align: super; margin-left: 0.25em; }
+.menu-list li.is-active::before { content: none; }
+ 
+.menu-arrow {
+  position: absolute;
+  left: var(--header-pad-x);
+  top: 5rem;
+  font-size: 2rem;
+  line-height: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: top 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.2s ease;
+  z-index: 2;
+}
+.menu-arrow.is-shown { opacity: 1; }
+ 
+.menu-preview {
+  position: absolute;
+  right: var(--header-pad-x);
+  top: 5rem;
+  width: calc(50% - var(--header-pad-x) - 2rem);
+  max-width: 460px;
+  transition: top 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.menu-preview .preview-inner { opacity: 0; transition: opacity 0.25s ease; }
+.menu-preview.is-shown .preview-inner { opacity: 1; }
+.menu-preview img {
+  width: 100%; height: auto;
+  aspect-ratio: 4 / 3; object-fit: cover;
+  background: #d8d2c4;
+}
+.menu-preview .caption { margin-top: 0.4rem; font-size: 1.4rem; line-height: 1.3; }
+ 
+.menu-mobile-preview { display: none; }
+ 
+/* ---------- Menu footer ---------- */
+.menu-footer {
+  position: relative;
+  z-index: 60;                  /* above the locked big-title */
+  margin-top: 8rem;
+  padding: 4rem var(--header-pad-x) 6rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.menu-footer .footer-photo {
+  position: relative;
+  width: 50%;
+  max-width: 600px;
+}
+.menu-footer img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #d8d2c4;
+  display: block;
+}
+.menu-footer .footer-info {
+  position: absolute;
+  top: 50%;
+  left: -8%;                    /* overlaps the photo's left edge */
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0.18em 0.5em;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+  font-size: 1.5rem;
+  text-align: left;
+}
+.menu-footer .footer-info span {
+  display: block;
+  background: transparent;
+  padding: 0;
+  white-space: nowrap;
+}
+.menu-footer .footer-info .credit {
+  margin-top: 0.4em;
+  font-style: italic;
+  font-size: 0.85em;
+}
+ 
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+  :root {
+    --header-pad-x: 1.5rem;
+    --header-pad-y: 1.2rem;
+  }
+  body { font-size: 18px; }
+ 
+  .site-header {
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 1.4rem;
+    letter-spacing: -0.06em;
+  }
+  .site-header .left  { justify-self: start; text-align: left; display: block; }
+  .site-header .center { justify-self: center; text-align: center; display: block; }
+  .site-header .right { justify-self: end; text-align: right; display: block; }
+ 
+  .big-title .line.extra { justify-self: center; text-align: center; display: block; }
+  .big-title { font-size: 30vw; line-height: 0.6; }
+ 
+  body.no-lock-mobile .big-title {
+    position: static;
+    text-align: center;
+    margin-top: 15rem;
+    line-height: 0.88;
+    overflow: hidden;
+  }
+ 
+  /* Mobile info overlay — shrink so 3 lines fit + still above big-title */
+  .info-overlay {
+    font-size: 1.4rem;
+    z-index: 60;
+    padding: 0.2em 0.5em;
+  }
+ 
+  .menu-wrap {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem var(--header-pad-x) 0;
+  }
+  .menu-list { font-size: 1.7rem; padding-left: 1.6rem; }
+ 
+  .menu-arrow { font-size: 1.4rem; left: var(--header-pad-x); }
+ 
+  .menu-preview { display: none; }
+ 
+  /* Mobile preview now follows the active item (like desktop) */
+  .menu-mobile-preview {
+    display: block;
+    position: absolute;          /* was fixed */
+    right: 10px;
+    top: 5rem;                   /* JS overrides */
+    width: 38vw;
+    z-index: 5;
+    background: transparent;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    transition: top 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  .menu-mobile-preview img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #d8d2c4;
+  }
+  .menu-mobile-preview .caption {
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    text-align: right;
+  }
+ 
+  /* Footer scales down on mobile */
+  .menu-footer {
+    padding: 3rem var(--header-pad-x) 4rem;
+    margin-top: 6rem;
+  }
+  .menu-footer .footer-photo {
+    width: 75%;
+    max-width: none;
+  }
+  .menu-footer .footer-info {
+    font-size: 1.1rem;
+    left: -4%;
+  }
+}
+ 
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}

@@ -1,0 +1,49 @@
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  font-size: clamp(4rem, 19vw, 22rem);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  user-select: none;
+}
+
+.marquee__track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 80s linear infinite;
+  width: max-content;
+}
+
+.marquee__item {
+  padding-right: 0.05em;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Home variant: fixed at the bottom of the viewport, sits over the gallery */
+.marquee--home {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  color: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
+
+/* Menu variant: lives at the natural bottom of the document */
+.marquee--menu {
+  position: relative;
+  margin-top: 4rem;
+  color: var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}

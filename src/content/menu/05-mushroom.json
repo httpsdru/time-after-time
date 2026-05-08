@@ -1,0 +1,9 @@
+{
+  "id": "mushroom",
+  "name": "mushroom",
+  "price": 24,
+  "category": "food",
+  "order": 5,
+  "image": "",
+  "description": "roasted mushrooms, soft polenta, parmesan"
+}

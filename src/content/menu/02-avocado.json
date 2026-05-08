@@ -1,0 +1,9 @@
+{
+  "id": "avocado",
+  "name": "avocado",
+  "price": 19,
+  "category": "food",
+  "order": 2,
+  "image": "",
+  "description": "smashed avocado on sourdough, lemon, chilli"
+}

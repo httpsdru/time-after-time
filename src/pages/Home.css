@@ -1,0 +1,65 @@
+.home {
+  position: relative;
+  width: 100%;
+  /* Reserve space at the bottom so the fixed marquee never covers the last image. */
+  padding-bottom: clamp(4rem, 18vw, 22rem);
+}
+
+.home__gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.home__slide {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home__empty {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.home__empty .placeholder {
+  max-width: 400px;
+}
+
+/* Stacked white "pill" overlay with the cafe's hours / address / IG */
+.home__info {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  text-align: center;
+  pointer-events: none;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.home__info p {
+  margin: 1px 0;
+}
+
+.home__info p span {
+  background: #fff;
+  color: var(--fg);
+  padding: 0 0.4em;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .home__info {
+    font-size: 1.15rem;
+  }
+}

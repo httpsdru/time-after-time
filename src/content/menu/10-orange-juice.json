@@ -1,0 +1,9 @@
+{
+  "id": "orange-juice",
+  "name": "orange juice",
+  "price": 8,
+  "category": "drink",
+  "order": 1,
+  "image": "",
+  "description": "freshly squeezed valencia oranges"
+}

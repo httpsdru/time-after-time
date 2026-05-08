@@ -1,0 +1,73 @@
+/* time after time — global styles */
+
+:root {
+  --bg: #f6f4ef;
+  --fg: #0d0d0d;
+  --muted: #888;
+  --serif: "Times New Roman", Times, "Liberation Serif", serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+sup {
+  font-size: 0.55em;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 0.25em;
+}
+
+/* placeholder shown when no image is uploaded yet */
+.placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(
+    45deg,
+    #e7e3d8,
+    #e7e3d8 10px,
+    #efece1 10px,
+    #efece1 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.9rem;
+}

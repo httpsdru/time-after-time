@@ -1,0 +1,87 @@
+media:
+  input: images
+  output: /images
+
+content:
+  - name: info
+    label: Info & Hero Photos
+    type: file
+    path: content/info.json
+    format: json
+    fields:
+      - name: name
+        label: Cafe name
+        type: string
+      - name: hours
+        label: Opening hours
+        type: string
+      - name: address
+        label: Address
+        type: string
+      - name: instagram_handle
+        label: Instagram handle
+        type: string
+        description: "Shown on the home page (e.g. @timeaftertimemel)"
+      - name: instagram_url
+        label: Instagram URL
+        type: string
+      - name: hero_images
+        label: Hero photos (home page scroll)
+        type: object
+        list:
+          min: 1
+        fields:
+          - name: image
+            label: Photo
+            type: image
+          - name: alt
+            label: Alt text
+            type: string
+
+  - name: food
+    label: Food menu
+    type: file
+    path: content/food.json
+    format: json
+    fields:
+      - name: items
+        label: Food items
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Item name
+            type: string
+          - name: price
+            label: Price (AUD)
+            type: number
+          - name: image
+            label: Photo
+            type: image
+          - name: caption
+            label: Caption (shown on hover)
+            type: string
+
+  - name: drink
+    label: Drink menu
+    type: file
+    path: content/drink.json
+    format: json
+    fields:
+      - name: items
+        label: Drink items
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Item name
+            type: string
+          - name: price
+            label: Price (AUD)
+            type: number
+          - name: image
+            label: Photo
+            type: image
+          - name: caption
+            label: Caption (shown on hover)
+            type: string

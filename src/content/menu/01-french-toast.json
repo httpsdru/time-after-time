@@ -1,0 +1,9 @@
+{
+  "id": "french-toast",
+  "name": "french toast",
+  "price": 24,
+  "category": "food",
+  "order": 1,
+  "image": "",
+  "description": "brioche, vanilla custard, seasonal fruit, maple"
+}

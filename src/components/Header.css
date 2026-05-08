@@ -1,0 +1,78 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.1rem 1.25rem;
+  font-size: 1.4rem;
+  line-height: 1.05;
+  pointer-events: none;
+}
+
+.site-header > *,
+.site-header a {
+  pointer-events: auto;
+}
+
+/* Home: white text overlaid on photos */
+.site-header--home {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+/* Menu: black text on the cream page */
+.site-header--menu {
+  color: var(--fg);
+  background: var(--bg);
+}
+
+.site-header__brand {
+  font-size: 1.4rem;
+  letter-spacing: -0.005em;
+}
+
+.site-header__nav--stack {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 0;
+  font-size: 1.4rem;
+  line-height: 1.05;
+}
+
+.site-header__nav--stack a {
+  display: block;
+}
+
+.site-header--menu .site-header__brand {
+  position: absolute;
+  left: 50%;
+  top: 1.1rem;
+  transform: translateX(-50%);
+}
+
+.site-header--menu .site-header__nav--left {
+  margin-left: 0;
+}
+
+.site-header--menu .site-header__nav--right {
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    padding: 1.4rem 1.75rem;
+    font-size: 1.6rem;
+  }
+  .site-header__brand,
+  .site-header__nav--stack {
+    font-size: 1.6rem;
+  }
+  .site-header--menu .site-header__brand {
+    top: 1.4rem;
+  }
+}

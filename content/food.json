@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "name": "french toast",
+      "price": 24,
+      "image": "/images/food-french-toast.jpg",
+      "caption": "french toast with seasonal fruit"
+    },
+    {
+      "name": "avocado",
+      "price": 19,
+      "image": "/images/food-avocado.jpg",
+      "caption": "avocado on sourdough"
+    },
+    {
+      "name": "folded eggs",
+      "price": 18,
+      "image": "/images/food-folded-eggs.jpg",
+      "caption": "folded eggs on sourdough bread"
+    },
+    {
+      "name": "warm green",
+      "price": 23,
+      "image": "/images/food-warm-green.jpg",
+      "caption": "warm green bowl with grains"
+    },
+    {
+      "name": "mushroom",
+      "price": 24,
+      "image": "/images/food-mushroom.jpg",
+      "caption": "mushrooms on toast with herbs"
+    },
+    {
+      "name": "kingfish nicoise",
+      "price": 25,
+      "image": "/images/food-kingfish.jpg",
+      "caption": "kingfish nicoise salad"
+    },
+    {
+      "name": "t.a.t breakfast plate",
+      "price": 25,
+      "image": "/images/food-breakfast-plate.jpg",
+      "caption": "the time after time breakfast plate"
+    }
+  ]
+}

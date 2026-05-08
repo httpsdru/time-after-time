@@ -1,0 +1,25 @@
+{
+  "name": "time after time",
+  "hours": "7.30am — 3.30pm, daily",
+  "address": "7 howey place, melbourne, 3000",
+  "instagram_handle": "@timeaftertimemel",
+  "instagram_url": "https://instagram.com/timeaftertimemel",
+  "hero_images": [
+    {
+      "image": "/images/hero-1.jpg",
+      "alt": "interior of time after time cafe"
+    },
+    {
+      "image": "/images/hero-2.jpg",
+      "alt": "folded eggs on sourdough"
+    },
+    {
+      "image": "/images/hero-3.jpg",
+      "alt": "fig pastry on silver tray"
+    },
+    {
+      "image": "/images/hero-4.jpg",
+      "alt": "matcha pastry on silver tray"
+    }
+  ]
+}
