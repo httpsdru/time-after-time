@@ -78,11 +78,15 @@ body.menu .site-header { color: #111; }
 body.home .big-title { color: #fff; }
 body.menu .big-title { color: #111; }
  
+/* Each line is sized to its content and centered via transform —
+   this works even when the text is wider than the viewport. */
 .big-title .line {
   display: block;
   width: max-content;
-  margin: 0 auto;
   white-space: nowrap;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .big-title .line.extra { display: none; }
  
@@ -93,6 +97,8 @@ main {
   padding-top: 5rem;
   padding-bottom: var(--footer-h-desktop);
 }
+/* Home page: no top gap — first hero photo starts at the very top */
+body.home main { padding-top: 0; }
  
 /* ---------- Home: infinite hero scroll ---------- */
 .hero-scroll { display: flex; flex-direction: column; gap: 0; }
@@ -106,25 +112,28 @@ main {
 }
  
 /* ---------- Info overlay (home page) ---------- */
+/* Per-line pills — each line has its own white shape sized to its text */
 .info-overlay {
   position: fixed;
   top: 45%; left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 60;                  /* above big-title (z:50) */
+  z-index: 60;
   text-align: center;
   font-size: 1.6rem;
   letter-spacing: -0.07em;
-  line-height: 0.9;
-  background: #fff;             /* one solid block under all lines */
-  padding: 0.15em 0.45em;
-  display: inline-block;
-}
-.info-overlay span {
-  display: block;               /* one line each, no per-span box */
   background: transparent;
   padding: 0;
-  white-space: nowrap;          /* never wrap mid-line */
 }
+.info-overlay span {
+  display: block;
+  background: #fff;
+  padding: 0.05em 0.45em;
+  margin: 0 auto;
+  width: max-content;
+  white-space: nowrap;
+  line-height: 1.0;
+}
+.info-overlay span + span { margin-top: 0.05em; }
  
 /* ---------- Menu page ---------- */
 .menu-wrap {
@@ -162,12 +171,14 @@ main {
 }
 .menu-arrow.is-shown { opacity: 1; }
  
+/* Desktop preview centers on the active line */
 .menu-preview {
   position: absolute;
   right: var(--header-pad-x);
   top: 5rem;
   width: calc(50% - var(--header-pad-x) - 2rem);
   max-width: 460px;
+  transform: translateY(-50%);
   transition: top 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .menu-preview .preview-inner { opacity: 0; transition: opacity 0.25s ease; }
@@ -181,47 +192,48 @@ main {
  
 .menu-mobile-preview { display: none; }
  
-/* ---------- Menu footer ---------- */
+/* ---------- Menu footer (full width, 150px tall) ---------- */
 .menu-footer {
   position: relative;
-  z-index: 60;                  /* above the locked big-title */
+  z-index: 60;
   margin-top: 8rem;
-  padding: 4rem var(--header-pad-x) 6rem;
-  display: flex;
-  justify-content: flex-end;
+  padding: 0;
 }
 .menu-footer .footer-photo {
   position: relative;
-  width: 50%;
-  max-width: 600px;
+  width: 100%;
+  height: 150px;
 }
 .menu-footer img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 150px;
   object-fit: cover;
   background: #d8d2c4;
   display: block;
+  aspect-ratio: auto;
 }
 .menu-footer .footer-info {
   position: absolute;
   top: 50%;
-  left: -8%;                    /* overlaps the photo's left edge */
+  left: var(--header-pad-x);
   transform: translateY(-50%);
-  background: #fff;
-  padding: 0.18em 0.5em;
-  line-height: 0.9;
+  background: transparent;
+  padding: 0;
   letter-spacing: -0.07em;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: left;
 }
 .menu-footer .footer-info span {
   display: block;
-  background: transparent;
-  padding: 0;
+  background: #fff;
+  padding: 0.05em 0.4em;
+  width: max-content;
   white-space: nowrap;
+  line-height: 1.0;
 }
+.menu-footer .footer-info span + span { margin-top: 0.05em; }
 .menu-footer .footer-info .credit {
-  margin-top: 0.4em;
+  margin-top: 0.3em;
   font-style: italic;
   font-size: 0.85em;
 }
@@ -243,7 +255,7 @@ main {
   .site-header .center { justify-self: center; text-align: center; display: block; }
   .site-header .right { justify-self: end; text-align: right; display: block; }
  
-  .big-title .line.extra { justify-self: center; text-align: center; display: block; }
+  .big-title .line.extra { display: block; text-align: center; }
   .big-title { font-size: 30vw; line-height: 0.6; }
  
   body.no-lock-mobile .big-title {
@@ -254,12 +266,7 @@ main {
     overflow: hidden;
   }
  
-  /* Mobile info overlay — shrink so 3 lines fit + still above big-title */
-  .info-overlay {
-    font-size: 1.4rem;
-    z-index: 60;
-    padding: 0.2em 0.5em;
-  }
+  .info-overlay { font-size: 1.4rem; }
  
   .menu-wrap {
     grid-template-columns: 1fr;
@@ -272,18 +279,19 @@ main {
  
   .menu-preview { display: none; }
  
-  /* Mobile preview now follows the active item (like desktop) */
+  /* Mobile preview: absolute inside menu-wrap, centered on active line (matches arrow) */
   .menu-mobile-preview {
     display: block;
-    position: absolute;          /* was fixed */
+    position: absolute;
     right: 10px;
-    top: 5rem;                   /* JS overrides */
+    top: 5rem;                /* JS overrides */
     width: 38vw;
     z-index: 5;
     background: transparent;
     pointer-events: none;
     margin: 0;
     padding: 0;
+    transform: translateY(-50%);
     transition: top 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
   }
   .menu-mobile-preview img {
@@ -298,22 +306,20 @@ main {
     text-align: right;
   }
  
-  /* Footer scales down on mobile */
-  .menu-footer {
-    padding: 3rem var(--header-pad-x) 4rem;
-    margin-top: 6rem;
-  }
-  .menu-footer .footer-photo {
-    width: 75%;
-    max-width: none;
-  }
+  .menu-footer { margin-top: 6rem; }
+  .menu-footer .footer-photo { height: 150px; }
+  .menu-footer img { height: 150px; }
   .menu-footer .footer-info {
-    font-size: 1.1rem;
-    left: -4%;
+    font-size: 0.85rem;
+    left: var(--header-pad-x);
   }
 }
  
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+{1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
