@@ -1,58 +1,172 @@
 {
   "items": [
     {
-      "name": "orange juice",
-      "price": 8,
-      "image": "/images/drink-orange-juice.jpg",
-      "caption": "fresh squeezed orange juice"
+      "name": "time traveller",
+      "price": 9,
+      "image": "/images/drink-time-traveller.jpg",
+      "caption": "signature iced coffee with shaken espresso, cream and orange zest"
     },
     {
-      "name": "filter coffee",
+      "name": "flat white",
+      "price": 5.5,
+      "image": "/images/drink-flat-white.jpg",
+      "caption": "flat white coffee"
+    },
+    {
+      "name": "latte",
+      "price": 5.5,
+      "image": "/images/drink-latte.jpg",
+      "caption": "latte coffee"
+    },
+    {
+      "name": "cappuccino",
+      "price": 5.5,
+      "image": "/images/drink-cappuccino.jpg",
+      "caption": "cappuccino coffee"
+    },
+    {
+      "name": "piccolo",
+      "price": 5,
+      "image": "/images/drink-piccolo.jpg",
+      "caption": "piccolo coffee"
+    },
+    {
+      "name": "magic",
+      "price": 5.5,
+      "image": "/images/drink-magic.jpg",
+      "caption": "melbourne-style magic coffee"
+    },
+    {
+      "name": "mocha",
       "price": 6,
-      "image": "/images/drink-filter.jpg",
-      "caption": "single-origin filter"
+      "image": "/images/drink-mocha.jpg",
+      "caption": "coffee blended with chocolate"
     },
     {
       "name": "espresso",
       "price": 5,
       "image": "/images/drink-espresso.jpg",
-      "caption": "double shot espresso"
+      "caption": "single espresso shot"
     },
     {
-      "name": "flat white",
-      "price": 6,
-      "image": "/images/drink-flat-white.jpg",
-      "caption": "flat white"
+      "name": "double espresso",
+      "price": 5,
+      "image": "/images/drink-double-espresso.jpg",
+      "caption": "double espresso shot"
     },
     {
-      "name": "latte",
-      "price": 6,
-      "image": "/images/drink-latte.jpg",
-      "caption": "latte"
+      "name": "long black",
+      "price": 5,
+      "image": "/images/drink-long-black.jpg",
+      "caption": "long black coffee"
     },
     {
-      "name": "cappuccino",
-      "price": 6,
-      "image": "/images/drink-cappuccino.jpg",
-      "caption": "cappuccino"
+      "name": "short macchiato",
+      "price": 5,
+      "image": "/images/drink-short-macchiato.jpg",
+      "caption": "espresso topped with milk foam"
+    },
+    {
+      "name": "long macchiato",
+      "price": 5,
+      "image": "/images/drink-long-macchiato.jpg",
+      "caption": "double espresso with textured milk"
     },
     {
       "name": "matcha",
       "price": 7,
       "image": "/images/drink-matcha.jpg",
-      "caption": "ceremonial matcha"
+      "caption": "ceremonial style matcha"
+    },
+    {
+      "name": "chai",
+      "price": 6.5,
+      "image": "/images/drink-chai.jpg",
+      "caption": "spiced chai latte"
     },
     {
       "name": "hot chocolate",
       "price": 7,
       "image": "/images/drink-hot-chocolate.jpg",
-      "caption": "single-origin hot chocolate"
+      "caption": "rich hot chocolate"
     },
     {
-      "name": "sparkling water",
+      "name": "tea",
       "price": 6,
-      "image": "/images/drink-sparkling.jpg",
-      "caption": "sparkling water"
+      "image": "/images/drink-tea.jpg",
+      "caption": "english breakfast, chamomile, peppermint, earl grey or green sencha"
+    },
+    {
+      "name": "babyccino",
+      "price": 2,
+      "image": "/images/drink-babyccino.jpg",
+      "caption": "warm frothy milk with chocolate dusting"
+    },
+    {
+      "name": "iced chocolate",
+      "price": 8,
+      "image": "/images/drink-iced-chocolate.jpg",
+      "caption": "cold chocolate drink served over ice"
+    },
+    {
+      "name": "iced chai",
+      "price": 7.5,
+      "image": "/images/drink-iced-chai.jpg",
+      "caption": "iced spiced chai latte"
+    },
+    {
+      "name": "cold brew coffee",
+      "price": 7,
+      "image": "/images/drink-cold-brew.jpg",
+      "caption": "slow steeped cold brew coffee"
+    },
+    {
+      "name": "iced latte",
+      "price": 6.5,
+      "image": "/images/drink-iced-latte.jpg",
+      "caption": "espresso with milk over ice"
+    },
+    {
+      "name": "iced long black",
+      "price": 6,
+      "image": "/images/drink-iced-long-black.jpg",
+      "caption": "iced long black coffee"
+    },
+    {
+      "name": "iced mocha",
+      "price": 7,
+      "image": "/images/drink-iced-mocha.jpg",
+      "caption": "iced coffee blended with chocolate"
+    },
+    {
+      "name": "iced matcha",
+      "price": 8,
+      "image": "/images/drink-iced-matcha.jpg",
+      "caption": "iced ceremonial style matcha"
+    },
+    {
+      "name": "detox juice",
+      "price": 8,
+      "image": "/images/drink-detox-juice.jpg",
+      "caption": "ginger, orange and carrot juice"
+    },
+    {
+      "name": "green juice",
+      "price": 8.5,
+      "image": "/images/drink-green-juice.jpg",
+      "caption": "spinach, celery and apple juice"
+    },
+    {
+      "name": "orange juice",
+      "price": 7,
+      "image": "/images/drink-orange-juice.jpg",
+      "caption": "fresh orange juice"
+    },
+    {
+      "name": "refresher juice",
+      "price": 7.5,
+      "image": "/images/drink-refresher-juice.jpg",
+      "caption": "orange and apple juice"
     }
   ]
 }
