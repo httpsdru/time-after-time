@@ -34,8 +34,6 @@
       <span>${info.hours || ''}</span>
       <span><a href="${escapeAttr(mapsUrl)}" target="_blank" rel="noopener">${info.address || ''}</a></span>
       <span><a href="${escapeAttr(igUrl)}" target="_blank" rel="noopener">${info.instagram_handle || ''}</a></span>
-      ${info.email ? `<span><a href="${escapeAttr(mailUrl)}">${info.email}</a></span>` : ''}
-      <span class="credit">website by httpsdru</span>
     </div>
   `;
  

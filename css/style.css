@@ -139,8 +139,10 @@ body.home {
 }
 .info-overlay span + span { margin-top: 0.05em; }
 .info-overlay .credit { font-style: italic; font-size: 0.85em; margin-top: 0.4em; }
-.info-overlay a { color: inherit; text-decoration: none; }
-.info-overlay a:hover { text-decoration: underline; }
+.info-overlay a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
+/* Hover inversion: span (pill) goes black, link text goes white */
+.info-overlay span:has(a:hover) { background: #000; color: #fff; }
+.info-overlay span:has(a:hover) a { color: #fff; }
  
 /* ---------- Menu page ---------- */
 .menu-wrap {
@@ -238,8 +240,10 @@ body.home {
 .menu-footer .footer-info-right span { margin-left: auto; }
 .menu-footer .footer-info span + span { margin-top: 0.05em; }
 .menu-footer .footer-info .credit { font-style: italic; font-size: 0.9em; margin-top: 0.3em; }
-.menu-footer .footer-info a { color: inherit; text-decoration: none; }
-.menu-footer .footer-info a:hover { text-decoration: underline; }
+.menu-footer .footer-info a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
+/* Hover inversion in the footer too */
+.menu-footer .footer-info span:has(a:hover) { background: #000; color: #fff; }
+.menu-footer .footer-info span:has(a:hover) a { color: #fff; }
  
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
@@ -264,8 +268,8 @@ body.home {
   body.no-lock-mobile .big-title {
     position: static;
     text-align: center;
-    margin-top: 15rem;
-    line-height: 0.88;
+    margin-top: 10rem;
+    line-height: 0.7;       /* tighter — lines visually overlap */
     overflow: hidden;
   }
  
@@ -308,11 +312,13 @@ body.home {
     text-align: right;
   }
  
-  .menu-footer { margin-top: 6rem; }
-  .menu-footer .footer-photo { height: 50vh; min-height: 320px; }
-  .menu-footer .footer-info { font-size: 0.9rem; bottom: 1rem; }
-  .menu-footer .footer-info-left  { left: var(--header-pad-x); }
-  .menu-footer .footer-info-right { right: var(--header-pad-x); }
+  .menu-footer { margin-top: 4rem; margin-bottom: 0; }
+  .menu-footer .footer-photo { height: 60vh; min-height: 380px; }
+  .menu-footer .footer-info { font-size: 1.05rem; bottom: 1.2rem; letter-spacing: -0.06em; }
+  .menu-footer .footer-info-left  { left: 0.6rem; }
+  .menu-footer .footer-info-right { right: 0.6rem; }
+  .menu-footer .footer-info span { padding: 0.05em 0.4em; }
+  .menu-footer .footer-info .credit { font-size: 0.85em; margin-top: 0.25em; }
 }
  
 .sr-only {
