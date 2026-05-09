@@ -312,11 +312,25 @@ body.home {
     text-align: right;
   }
  
-  .menu-footer { margin-top: 0rem; margin-bottom: 0; }
+    .menu-footer { margin-top: 0; margin-bottom: 0; }
   .menu-footer .footer-photo { height: 20vh; min-height: 200px; }
-  .menu-footer .footer-info { font-size: 1.2rem; top: 1.2rem; letter-spacing: -0.06em; }
-  .menu-footer .footer-info-left  { left: 1.2rem; }
-  .menu-footer .footer-info-right { right: 1.2rem; bottom: 1.2rem;}
+  .menu-footer .footer-info {
+    font-size: 1.2rem;
+    letter-spacing: -0.06em;
+    top: auto;
+    text-align: left;
+  }
+  
+  /* Both groups left-aligned, stacked from the bottom-left */
+  .menu-footer .footer-info-left,
+  .menu-footer .footer-info-right {
+    left: 1.2rem;
+    right: auto;
+    text-align: left;
+  }
+  .menu-footer .footer-info-left  { bottom: 1.2rem; }
+  .menu-footer .footer-info-right { bottom: 6rem; }   /* sits above the left group */
+  .menu-footer .footer-info-right span { margin-left: 0; }
   .menu-footer .footer-info span { padding: 0.05em 0.4em; }
   .menu-footer .footer-info .credit { font-size: 1.2rem; margin-top: 0.25em; }
 }
