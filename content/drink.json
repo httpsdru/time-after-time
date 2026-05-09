@@ -3,169 +3,169 @@
     {
       "name": "time traveller",
       "price": 9,
-      "image": "/images/drink-time-traveller.jpg",
+      "image": "/images/4NGWI4VHROF6VZRXW2N4JE3Z.webp",
       "caption": "signature iced coffee with shaken espresso, cream and orange zest"
     },
     {
       "name": "flat white",
       "price": 5.5,
-      "image": "/images/drink-flat-white.jpg",
+      "image": "/images/EBQ3IRAJJYGL4ISPVIZLWLAS.webp",
       "caption": "flat white coffee"
     },
     {
       "name": "latte",
       "price": 5.5,
-      "image": "/images/drink-latte.jpg",
+      "image": "/images/27HEPOSUKG6NS7PF6QVVN34L.webp",
       "caption": "latte coffee"
     },
     {
       "name": "cappuccino",
       "price": 5.5,
-      "image": "/images/drink-cappuccino.jpg",
+      "image": "/images/QW55JQ6EOLFBALQ2YPBC6RQ4.webp",
       "caption": "cappuccino coffee"
     },
     {
       "name": "piccolo",
       "price": 5,
-      "image": "/images/drink-piccolo.jpg",
+      "image": "/images/ZLND6ECFTGMKAEMQAG26G5MX-1.webp",
       "caption": "piccolo coffee"
     },
     {
       "name": "magic",
       "price": 5.5,
-      "image": "/images/drink-magic.jpg",
+      "image": "/images/CLZN7LQYQNSUCRTAFYNLOIZT.webp",
       "caption": "melbourne-style magic coffee"
     },
     {
       "name": "mocha",
       "price": 6,
-      "image": "/images/drink-mocha.jpg",
+      "image": "/images/T3WC664ALHLMWTA6TT2U7QB4-1.webp",
       "caption": "coffee blended with chocolate"
     },
     {
       "name": "espresso",
       "price": 5,
-      "image": "/images/drink-espresso.jpg",
+      "image": "/images/XDI5SXPIGHPTT3TEA4X2LJG5.webp",
       "caption": "single espresso shot"
     },
     {
       "name": "double espresso",
       "price": 5,
-      "image": "/images/drink-double-espresso.jpg",
+      "image": "/images/XDI5SXPIGHPTT3TEA4X2LJG5-1.webp",
       "caption": "double espresso shot"
     },
     {
       "name": "long black",
       "price": 5,
-      "image": "/images/drink-long-black.jpg",
+      "image": "/images/NJNSLNJMVQ3KT7E4PIQXRC6W.webp",
       "caption": "long black coffee"
     },
     {
       "name": "short macchiato",
       "price": 5,
-      "image": "/images/drink-short-macchiato.jpg",
+      "image": "/images/LO6T35MKYU53LGLHYGPSI2WK.webp",
       "caption": "espresso topped with milk foam"
     },
     {
       "name": "long macchiato",
       "price": 5,
-      "image": "/images/drink-long-macchiato.jpg",
+      "image": "/images/ZLND6ECFTGMKAEMQAG26G5MX (1).webp",
       "caption": "double espresso with textured milk"
     },
     {
       "name": "matcha",
       "price": 7,
-      "image": "/images/drink-matcha.jpg",
+      "image": "/images/BZTYARPJ7QX4UX4ZQQTUYLLD.webp",
       "caption": "ceremonial style matcha"
     },
     {
       "name": "chai",
       "price": 6.5,
-      "image": "/images/drink-chai.jpg",
+      "image": "/images/OH63TDFV6F6F64GCNCA6N2S4.webp",
       "caption": "spiced chai latte"
     },
     {
       "name": "hot chocolate",
       "price": 7,
-      "image": "/images/drink-hot-chocolate.jpg",
+      "image": "/images/J7WAWIYNMACYU2LGZCW23HX4.webp",
       "caption": "rich hot chocolate"
     },
     {
       "name": "tea",
       "price": 6,
-      "image": "/images/drink-tea.jpg",
+      "image": "/images/SATTRNV6V3LYKAM2OQDWRBSV.webp",
       "caption": "english breakfast, chamomile, peppermint, earl grey or green sencha"
     },
     {
       "name": "babyccino",
       "price": 2,
-      "image": "/images/drink-babyccino.jpg",
+      "image": "/images/4M2QDW54XPQ4T2NV7F4UTMW5.webp",
       "caption": "warm frothy milk with chocolate dusting"
     },
     {
       "name": "iced chocolate",
       "price": 8,
-      "image": "/images/drink-iced-chocolate.jpg",
+      "image": "/images/6S65766HTOG6BX3S5YUQK3IF.webp",
       "caption": "cold chocolate drink served over ice"
     },
     {
       "name": "iced chai",
       "price": 7.5,
-      "image": "/images/drink-iced-chai.jpg",
+      "image": "/images/VMQWE2P72RPODC4ENN2G56KB.webp",
       "caption": "iced spiced chai latte"
     },
     {
       "name": "cold brew coffee",
       "price": 7,
-      "image": "/images/drink-cold-brew.jpg",
+      "image": "/images/YMQLNY3DZFCSGZJBAJQ2EKX2 (1).webp",
       "caption": "slow steeped cold brew coffee"
     },
     {
       "name": "iced latte",
       "price": 6.5,
-      "image": "/images/drink-iced-latte.jpg",
+      "image": "/images/INBOHMEVWBPCP3HMGDHAFIHJ.webp",
       "caption": "espresso with milk over ice"
     },
     {
       "name": "iced long black",
       "price": 6,
-      "image": "/images/drink-iced-long-black.jpg",
+      "image": "/images/YMQLNY3DZFCSGZJBAJQ2EKX2.webp",
       "caption": "iced long black coffee"
     },
     {
       "name": "iced mocha",
       "price": 7,
-      "image": "/images/drink-iced-mocha.jpg",
+      "image": "/images/SLP5GDYPFJMT5FJAKGFGKOWT.webp",
       "caption": "iced coffee blended with chocolate"
     },
     {
       "name": "iced matcha",
       "price": 8,
-      "image": "/images/drink-iced-matcha.jpg",
+      "image": "/images/JBZAMDLK743NFNYDLQFHLCIQ.webp",
       "caption": "iced ceremonial style matcha"
     },
     {
       "name": "detox juice",
       "price": 8,
-      "image": "/images/drink-detox-juice.jpg",
+      "image": "/images/GR6EHV47IOCDLUJVOSOXAJDC.webp",
       "caption": "ginger, orange and carrot juice"
     },
     {
       "name": "green juice",
       "price": 8.5,
-      "image": "/images/drink-green-juice.jpg",
+      "image": "/images/GVGETYB4V7HKKOJHWWVR5FL3.webp",
       "caption": "spinach, celery and apple juice"
     },
     {
       "name": "orange juice",
       "price": 7,
-      "image": "/images/drink-orange-juice.jpg",
+      "image": "/images/OUCQN4QD4YMMREXR7IFDCGBB.webp",
       "caption": "fresh orange juice"
     },
     {
       "name": "refresher juice",
       "price": 7.5,
-      "image": "/images/drink-refresher-juice.jpg",
+      "image": "/images/ONGJ2VOMBDFF3HJCPCFIW62Y.webp",
       "caption": "orange and apple juice"
     }
   ]
