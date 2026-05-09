@@ -1,6 +1,7 @@
 // menu.js — loads content/food.json + content/drink.json + content/info.json
 // Renders the menu list, the floating arrow, the desktop + mobile preview
-// (both follow the active item), and populates the footer photo + info block.
+// (both centered on the active line), populates the footer (two info groups),
+// and hijacks the food/drink nav so each scrolls to + activates the first item.
  
 (async function () {
   const list = document.getElementById('menu-list');
@@ -33,17 +34,33 @@
   ]);
  
   // ---------- footer ----------
+  const mapsUrl = info.address
+    ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(info.address)
+    : '#';
+  const igUrl = info.instagram_url
+    || (info.instagram_handle ? 'https://instagram.com/' + info.instagram_handle.replace(/^@/, '') : '#');
+  const mailUrl = info.email ? 'mailto:' + info.email : '#';
+ 
   const footerImg = document.getElementById('footer-image');
-  const footerHours = document.getElementById('footer-hours');
-  const footerAddr = document.getElementById('footer-address');
-  const footerHandle = document.getElementById('footer-handle');
   if (footerImg && info && Array.isArray(info.hero_images) && info.hero_images.length) {
     footerImg.src = normalizeSrc(info.hero_images[0].image);
     footerImg.alt = info.hero_images[0].alt || '';
   }
-  if (footerHours)  footerHours.textContent  = (info && info.hours) || '';
-  if (footerAddr)   footerAddr.textContent   = (info && info.address) || '';
-  if (footerHandle) footerHandle.textContent = (info && info.instagram_handle) || '';
+  const setText = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt || ''; };
+  const setLink = (id, href, txt, blank) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = '';
+    const a = document.createElement('a');
+    a.href = href;
+    a.textContent = txt || '';
+    if (blank) { a.target = '_blank'; a.rel = 'noopener'; }
+    el.appendChild(a);
+  };
+  setText('footer-hours', info.hours);
+  setLink('footer-address', mapsUrl, info.address, true);
+  setLink('footer-handle', igUrl, info.instagram_handle, true);
+  setLink('footer-email', mailUrl, info.email, false);
  
   // ---------- list ----------
   function renderItem(item) {
@@ -88,14 +105,13 @@
  
     const liRect = li.getBoundingClientRect();
     const wrapRect = wrap.getBoundingClientRect();
-    const yTop = liRect.top - wrapRect.top;
-    const yCenter = yTop + liRect.height / 2;
+    const yCenter = (liRect.top - wrapRect.top) + liRect.height / 2;
  
     arrow.style.top = yCenter + 'px';
     arrow.classList.add('is-shown');
  
-    desktopPreview.style.top = yTop + 'px';
-    if (mobilePreview) mobilePreview.style.top = yTop + 'px';
+    desktopPreview.style.top = yCenter + 'px';
+    if (mobilePreview) mobilePreview.style.top = yCenter + 'px';
  
     const src = li.dataset.image, cap = li.dataset.caption, alt = li.dataset.alt;
     if (desktopImg.getAttribute('src') !== src) desktopImg.src = src;
@@ -114,11 +130,11 @@
     if (li && li.dataset.image) setActive(li);
   });
  
-  // scroll updates active on BOTH desktop and mobile now
+  // scroll updates active on BOTH desktop and mobile
   function updateScrollActive() {
     const items = Array.from(list.querySelectorAll('li')).filter(li => li.dataset.image);
     if (!items.length) return;
-    const targetY = window.innerHeight * 0.45;
+    const targetY = window.innerHeight * 0.5;
     let best = items[0], bestDist = Infinity;
     items.forEach(li => {
       const r = li.getBoundingClientRect();
@@ -134,9 +150,35 @@
     if (active) setActive(active);
   });
  
+  // ---------- food / drink nav: scroll to + activate first item ----------
+  function firstItemAfter(anchorId) {
+    const anchor = document.getElementById(anchorId);
+    if (!anchor) return null;
+    let next = anchor.nextElementSibling;
+    while (next && !next.dataset.image) next = next.nextElementSibling;
+    return next;
+  }
+  function jumpToSection(anchorId) {
+    const target = firstItemAfter(anchorId);
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // give the smooth scroll a moment, then lock in active state
+    setTimeout(() => setActive(target), 600);
+  }
+  document.querySelectorAll('a[href="#food"]').forEach(a =>
+    a.addEventListener('click', e => { e.preventDefault(); jumpToSection('food'); })
+  );
+  document.querySelectorAll('a[href="#drink"]').forEach(a =>
+    a.addEventListener('click', e => { e.preventDefault(); jumpToSection('drink'); })
+  );
+  // honour deep-link on initial load (e.g. /menu.html#drink)
+  if (location.hash === '#food' || location.hash === '#drink') {
+    setTimeout(() => jumpToSection(location.hash.slice(1)), 100);
+  }
+ 
   // initial state
   const all = list.querySelectorAll('li[data-image]');
-  if (all.length) setActive(all[Math.min(2, all.length - 1)]);
+  if (all.length) setActive(all[0]);
   setTimeout(updateScrollActive, 200);
   setTimeout(() => {
     const a = list.querySelector('li.is-active');

@@ -1,6 +1,6 @@
 // home.js — pulls content/info.json and renders an infinite-loop hero scroll.
-// One of the hero images is overlaid with the cafe info block (one solid
-// white background under all three lines, no per-line boxes).
+// One of the hero images is overlaid with the cafe info block.
+// Address links to Maps, instagram handle to Instagram, email to mailto.
  
 (async function () {
   const scroll = document.getElementById('hero-scroll');
@@ -21,11 +21,21 @@
     return;
   }
  
+  const escapeAttr = s => String(s || '').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  const mapsUrl = info.address
+    ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(info.address)
+    : '#';
+  const igUrl = info.instagram_url
+    || (info.instagram_handle ? 'https://instagram.com/' + info.instagram_handle.replace(/^@/, '') : '#');
+  const mailUrl = info.email ? 'mailto:' + info.email : '#';
+ 
   const overlayHTML = `
     <div class="info-overlay">
       <span>${info.hours || ''}</span>
-      <span>${info.address || ''}</span>
-      <span>${info.instagram_handle || ''}</span>
+      <span><a href="${escapeAttr(mapsUrl)}" target="_blank" rel="noopener">${info.address || ''}</a></span>
+      <span><a href="${escapeAttr(igUrl)}" target="_blank" rel="noopener">${info.instagram_handle || ''}</a></span>
+      ${info.email ? `<span><a href="${escapeAttr(mailUrl)}">${info.email}</a></span>` : ''}
+      <span class="credit">website by httpsdru</span>
     </div>
   `;
  

@@ -25,6 +25,9 @@ content:
       - name: instagram_url
         label: Instagram URL
         type: string
+      - name: email
+        label: Contact email
+        type: string
       - name: hero_images
         label: Hero photos (home page scroll)
         type: object

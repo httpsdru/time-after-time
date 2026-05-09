@@ -4,17 +4,18 @@
   "address": "7 howey place, melbourne, 3000",
   "instagram_handle": "@timeaftertimemel",
   "instagram_url": "https://instagram.com/timeaftertimemel",
+  "email": "timeaftertimemel@gmail.com",
   "hero_images": [
     {
       "image": "/images/Time After Time_KZafiridis_007-f31188ae80.webp",
-      "alt": "folded eggs on sourdough"
-    },
-    {
-      "image": "/images/029AB521-CA72-417C-ADA4-4F6287A0AE9B_1_201_a-c349acbd6d.webp",
       "alt": "interior of time after time cafe"
     },
     {
-      "image": "/images/Time After Time_KZafiridis_029-6b1a708cd0.webp",
+      "image": "/images/029AB521-CA72-417C-ADA4-4F6287A0AE9B_1_201_a-c349acbd6d.webp",
+      "alt": "folded eggs on sourdough"
+    },
+    {
+      "image": "/images//images/Time After Time_KZafiridis_029-6b1a708cd0.webp",
       "alt": "fig pastry on silver tray"
     },
     {

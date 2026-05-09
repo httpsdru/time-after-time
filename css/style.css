@@ -1,6 +1,4 @@
-/* time after time — main stylesheet
-   font: TimesNewRoman everywhere
-   palette: warm cream background, black ink */
+/* time after time — main stylesheet */
  
 @font-face {
   font-family: "TimesNewRoman";
@@ -21,6 +19,7 @@
  
 * { box-sizing: border-box; margin: 0; padding: 0; }
  
+html { scroll-behavior: smooth; }
 html, body {
   background: var(--bg);
   color: var(--fg);
@@ -78,8 +77,6 @@ body.menu .site-header { color: #111; }
 body.home .big-title { color: #fff; }
 body.menu .big-title { color: #111; }
  
-/* Each line is sized to its content and centered via transform —
-   this works even when the text is wider than the viewport. */
 .big-title .line {
   display: block;
   width: max-content;
@@ -97,12 +94,20 @@ main {
   padding-top: 5rem;
   padding-bottom: var(--footer-h-desktop);
 }
-/* Home page: no top gap — first hero photo starts at the very top */
 body.home main { padding-top: 0; }
  
-/* ---------- Home: infinite hero scroll ---------- */
+/* ---------- Home: hero scroll with snap ---------- */
+body.home {
+  scroll-snap-type: y proximity;
+}
 .hero-scroll { display: flex; flex-direction: column; gap: 0; }
-.hero-scroll figure { width: 100%; height: 100vh; position: relative; overflow: hidden; }
+.hero-scroll figure {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
 .hero-scroll figure img { width: 100%; height: 100%; object-fit: cover; }
 .hero-scroll .placeholder {
   width: 100%; height: 100%;
@@ -111,8 +116,7 @@ body.home main { padding-top: 0; }
   font-size: 1rem; font-style: italic;
 }
  
-/* ---------- Info overlay (home page) ---------- */
-/* Per-line pills — each line has its own white shape sized to its text */
+/* ---------- Info overlay (home page) — per-line pills with links ---------- */
 .info-overlay {
   position: fixed;
   top: 45%; left: 50%;
@@ -134,6 +138,9 @@ body.home main { padding-top: 0; }
   line-height: 1.0;
 }
 .info-overlay span + span { margin-top: 0.05em; }
+.info-overlay .credit { font-style: italic; font-size: 0.85em; margin-top: 0.4em; }
+.info-overlay a { color: inherit; text-decoration: none; }
+.info-overlay a:hover { text-decoration: underline; }
  
 /* ---------- Menu page ---------- */
 .menu-wrap {
@@ -171,7 +178,6 @@ body.home main { padding-top: 0; }
 }
 .menu-arrow.is-shown { opacity: 1; }
  
-/* Desktop preview centers on the active line */
 .menu-preview {
   position: absolute;
   right: var(--header-pad-x);
@@ -192,7 +198,7 @@ body.home main { padding-top: 0; }
  
 .menu-mobile-preview { display: none; }
  
-/* ---------- Menu footer (full width, 150px tall) ---------- */
+/* ---------- Menu footer (full-width photo, two info groups overlaid) ---------- */
 .menu-footer {
   position: relative;
   z-index: 60;
@@ -202,41 +208,38 @@ body.home main { padding-top: 0; }
 .menu-footer .footer-photo {
   position: relative;
   width: 100%;
-  height: 150px;
+  height: 350px;
 }
 .menu-footer img {
   width: 100%;
-  height: 150px;
+  height: 100%;
   object-fit: cover;
   background: #d8d2c4;
   display: block;
-  aspect-ratio: auto;
 }
 .menu-footer .footer-info {
   position: absolute;
-  top: 50%;
-  left: var(--header-pad-x);
-  transform: translateY(-50%);
+  bottom: 1.2rem;
+  letter-spacing: -0.07em;
+  font-size: 1.1rem;
   background: transparent;
   padding: 0;
-  letter-spacing: -0.07em;
-  font-size: 1rem;
-  text-align: left;
 }
+.menu-footer .footer-info-left  { left: var(--header-pad-x); text-align: left; }
+.menu-footer .footer-info-right { right: var(--header-pad-x); text-align: right; }
 .menu-footer .footer-info span {
   display: block;
   background: #fff;
-  padding: 0.05em 0.4em;
+  padding: 0.05em 0.45em;
   width: max-content;
   white-space: nowrap;
   line-height: 1.0;
 }
+.menu-footer .footer-info-right span { margin-left: auto; }
 .menu-footer .footer-info span + span { margin-top: 0.05em; }
-.menu-footer .footer-info .credit {
-  margin-top: 0.3em;
-  font-style: italic;
-  font-size: 0.85em;
-}
+.menu-footer .footer-info .credit { font-style: italic; font-size: 0.9em; margin-top: 0.3em; }
+.menu-footer .footer-info a { color: inherit; text-decoration: none; }
+.menu-footer .footer-info a:hover { text-decoration: underline; }
  
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
@@ -255,7 +258,7 @@ body.home main { padding-top: 0; }
   .site-header .center { justify-self: center; text-align: center; display: block; }
   .site-header .right { justify-self: end; text-align: right; display: block; }
  
-  .big-title .line.extra { display: block; text-align: center; }
+  .big-title .line.extra { display: block; }
   .big-title { font-size: 30vw; line-height: 0.6; }
  
   body.no-lock-mobile .big-title {
@@ -279,12 +282,11 @@ body.home main { padding-top: 0; }
  
   .menu-preview { display: none; }
  
-  /* Mobile preview: absolute inside menu-wrap, centered on active line (matches arrow) */
   .menu-mobile-preview {
     display: block;
     position: absolute;
     right: 10px;
-    top: 5rem;                /* JS overrides */
+    top: 5rem;
     width: 38vw;
     z-index: 5;
     background: transparent;
@@ -307,12 +309,10 @@ body.home main { padding-top: 0; }
   }
  
   .menu-footer { margin-top: 6rem; }
-  .menu-footer .footer-photo { height: 150px; }
-  .menu-footer img { height: 150px; }
-  .menu-footer .footer-info {
-    font-size: 0.85rem;
-    left: var(--header-pad-x);
-  }
+  .menu-footer .footer-photo { height: 50vh; min-height: 320px; }
+  .menu-footer .footer-info { font-size: 0.9rem; bottom: 1rem; }
+  .menu-footer .footer-info-left  { left: var(--header-pad-x); }
+  .menu-footer .footer-info-right { right: var(--header-pad-x); }
 }
  
 .sr-only {
