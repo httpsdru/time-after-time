@@ -63,55 +63,55 @@
     {
       "name": "avocado toast",
       "price": 22,
-      "image": "/images/avocado-toast.jpg",
+      "image": "/images/SHHXJZU5MSDP7CJ7OZGCTJTG.webp",
       "caption": "edamame hummus, beans, furikake and toast"
     },
     {
       "name": "big breakfast",
       "price": 28,
-      "image": "/images/big-breakfast.jpg",
+      "image": "/images/6IVD2G5YX2BBDVLHDYAE2EF5.webp",
       "caption": "eggs your way, baked beans, bacon, pork sausage, mustard and sourdough toast"
     },
     {
       "name": "eggs your way",
       "price": 15,
-      "image": "/images/eggs-your-way.jpg",
+      "image": "/images/UWV3K2OFABLMM7XDPBO4B5HQ.webp",
       "caption": "poached, scrambled or fried eggs with house sourdough toast"
     },
     {
       "name": "folded eggs",
       "price": 23,
-      "image": "/images/folded-eggs.jpg",
+      "image": "/images/UEJYJ6E3RSCC25VG3IJU2YPE.webp",
       "caption": "soft folded eggs served on toast"
     },
     {
       "name": "house toast",
       "price": 10,
-      "image": "/images/house-toast.jpg",
+      "image": "/images/6XGPYBYKEQXKO66QMRPZJK25.webp",
       "caption": "house sourdough toast"
     },
     {
       "name": "mushroom toast",
       "price": 24,
-      "image": "/images/mushroom-toast.jpg",
+      "image": "/images/SD7M2Y2E7RWNVVRZFLRE7Y3C.webp",
       "caption": "charred seasonal mushrooms, bacon, chestnut, parmesan, toast and egg"
     },
     {
       "name": "granola yogurt bowl",
       "price": 18,
-      "image": "/images/granola-yogurt-bowl.jpg",
+      "image": "/images/BKB6JNEKGBSMCL4KQGZ63XOV.webp",
       "caption": "hung yoghurt, organic granola, poached pear, berries and pecan"
     },
     {
       "name": "t.a.t breakfast plate",
       "price": 19,
-      "image": "/images/tat-breakfast-plate.jpg",
+      "image": "/images/O43MBABO3HNZHZPZO7DUYMBT.webp",
       "caption": "house sourdough with jam, mushroom butter, soft boiled egg and cheese"
     },
     {
       "name": "warm green",
       "price": 24,
-      "image": "/images/warm-green.jpg",
+      "image": "/images/JBXDDYOD4EFB7CUUPAI3IGMZ.webp",
       "caption": "wild kale, beans, broccoli, butternut carrots, pesto, toast and egg"
     }
   ]
