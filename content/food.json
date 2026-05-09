@@ -1,46 +1,118 @@
 {
   "items": [
     {
-      "name": "french toast",
-      "price": 24,
-      "image": "/images/food-french-toast.jpg",
-      "caption": "french toast with seasonal fruit"
+      "name": "charcoal croissant figs and honey",
+      "price": 13.5,
+      "image": "/images/charcoal-croissant-figs-honey.jpg",
+      "caption": "charcoal croissant with figs and honey"
     },
     {
-      "name": "avocado",
-      "price": 19,
-      "image": "/images/food-avocado.jpg",
-      "caption": "avocado on sourdough"
+      "name": "charcoal croissant matcha custard + butter",
+      "price": 13.5,
+      "image": "/images/charcoal-croissant-matcha.jpg",
+      "caption": "charcoal croissant with matcha custard and butter"
+    },
+    {
+      "name": "plain croissant",
+      "price": 7,
+      "image": "/images/plain-croissant.jpg",
+      "caption": "classic plain butter croissant"
+    },
+    {
+      "name": "plain charcoal croissant",
+      "price": 7.5,
+      "image": "/images/plain-charcoal-croissant.jpg",
+      "caption": "classic charcoal butter croissant"
+    },
+    {
+      "name": "chocolate croissant",
+      "price": 10,
+      "image": "/images/chocolate-croissant.jpg",
+      "caption": "buttery croissant with chocolate filling"
+    },
+    {
+      "name": "almond croissant",
+      "price": 10,
+      "image": "/images/almond-croissant.jpg",
+      "caption": "almond croissant with frangipane filling"
+    },
+    {
+      "name": "apple turnover",
+      "price": 9.5,
+      "image": "/images/apple-turnover.jpg",
+      "caption": "flaky pastry filled with baked apple"
+    },
+    {
+      "name": "cinnamon rolls",
+      "price": 9,
+      "image": "/images/cinnamon-rolls.jpg",
+      "caption": "soft cinnamon rolls with sweet glaze"
+    },
+    {
+      "name": "ham and cheese croissant",
+      "price": 11,
+      "image": "/images/ham-cheese-croissant.jpg",
+      "caption": "croissant with ham and melted cheese"
+    },
+    {
+      "name": "egg and bacon muffin",
+      "price": 13,
+      "image": "/images/egg-bacon-muffin.jpg",
+      "caption": "egg, cheese and bacon on a charcoal bun"
+    },
+    {
+      "name": "avocado toast",
+      "price": 22,
+      "image": "/images/avocado-toast.jpg",
+      "caption": "edamame hummus, beans, furikake and toast"
+    },
+    {
+      "name": "big breakfast",
+      "price": 28,
+      "image": "/images/big-breakfast.jpg",
+      "caption": "eggs your way, baked beans, bacon, pork sausage, mustard and sourdough toast"
+    },
+    {
+      "name": "eggs your way",
+      "price": 15,
+      "image": "/images/eggs-your-way.jpg",
+      "caption": "poached, scrambled or fried eggs with house sourdough toast"
     },
     {
       "name": "folded eggs",
-      "price": 18,
-      "image": "/images/food-folded-eggs.jpg",
-      "caption": "folded eggs on sourdough bread"
-    },
-    {
-      "name": "warm green",
       "price": 23,
-      "image": "/images/food-warm-green.jpg",
-      "caption": "warm green bowl with grains"
+      "image": "/images/folded-eggs.jpg",
+      "caption": "soft folded eggs served on toast"
     },
     {
-      "name": "mushroom",
+      "name": "house toast",
+      "price": 10,
+      "image": "/images/house-toast.jpg",
+      "caption": "house sourdough toast"
+    },
+    {
+      "name": "mushroom toast",
       "price": 24,
-      "image": "/images/food-mushroom.jpg",
-      "caption": "mushrooms on toast with herbs"
+      "image": "/images/mushroom-toast.jpg",
+      "caption": "charred seasonal mushrooms, bacon, chestnut, parmesan, toast and egg"
     },
     {
-      "name": "kingfish nicoise",
-      "price": 25,
-      "image": "/images/food-kingfish.jpg",
-      "caption": "kingfish nicoise salad"
+      "name": "granola yogurt bowl",
+      "price": 18,
+      "image": "/images/granola-yogurt-bowl.jpg",
+      "caption": "hung yoghurt, organic granola, poached pear, berries and pecan"
     },
     {
       "name": "t.a.t breakfast plate",
-      "price": 25,
-      "image": "/images/food-breakfast-plate.jpg",
-      "caption": "the time after time breakfast plate"
+      "price": 19,
+      "image": "/images/tat-breakfast-plate.jpg",
+      "caption": "house sourdough with jam, mushroom butter, soft boiled egg and cheese"
+    },
+    {
+      "name": "warm green",
+      "price": 24,
+      "image": "/images/warm-green.jpg",
+      "caption": "wild kale, beans, broccoli, butternut carrots, pesto, toast and egg"
     }
   ]
 }
