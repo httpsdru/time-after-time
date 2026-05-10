@@ -144,6 +144,17 @@ body.home {
 .info-overlay span:has(a:hover) { background: #000; color: #fff; }
 .info-overlay span:has(a:hover) a { color: #fff; }
  
+/* Menu page: in flow at the end of the document, not fixed.
+   Naturally overlaps the locked big title when you scroll to the bottom. */
+.info-overlay.menu-bottom-info {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  margin: 4rem 0 30px;
+}
+
 /* ---------- Menu page ---------- */
 .menu-wrap {
   position: relative;
@@ -263,7 +274,7 @@ body.home {
   .site-header .right { justify-self: end; text-align: right; display: block; }
  
   .big-title .line.extra { display: block; }
-  .big-title { font-size: 30vw; line-height: 0.6; }
+  .big-title { font-size: 23vw; line-height: 0.6; }
  
   body.no-lock-mobile .big-title {
     position: static;
