@@ -98,7 +98,7 @@ body.home main { padding-top: 0; }
  
 /* ---------- Home: hero scroll with snap ---------- */
 body.home {
-  scroll-snap-type: y proximity;
+  scroll-snap-type: none;        /* JS handles snap with 30% threshold */
 }
 .hero-scroll { display: flex; flex-direction: column; gap: 0; }
 .hero-scroll figure {
@@ -106,7 +106,6 @@ body.home {
   height: 100vh;
   position: relative;
   overflow: hidden;
-  scroll-snap-align: start;
 }
 .hero-scroll figure img { width: 100%; height: 100%; object-fit: cover; }
 .hero-scroll .placeholder {

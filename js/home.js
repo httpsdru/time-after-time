@@ -1,11 +1,13 @@
-// home.js — pulls content/info.json and renders an infinite-loop hero scroll.
-// One of the hero images is overlaid with the cafe info block.
-// Address links to Maps, instagram handle to Instagram, email to mailto.
- 
+// home.js — pulls content/info.json and renders a fixed-size hero scroll
+// (3 sets of images). The page silently loops by snapping the scroll
+// position back by one set when the user crosses into the third set —
+// the DOM never grows. Scroll snaps with a 30% threshold: less than
+// 30% past the current photo → snap back, more than 30% → advance.
+
 (async function () {
   const scroll = document.getElementById('hero-scroll');
   if (!scroll) return;
- 
+
   let info;
   try {
     const res = await fetch('content/info.json', { cache: 'no-cache' });
@@ -14,21 +16,20 @@
     console.error('Could not load content/info.json', err);
     info = { hero_images: [] };
   }
- 
+
   const images = (info.hero_images || []).filter(Boolean);
   if (images.length === 0) {
     scroll.innerHTML = '<figure><div class="placeholder">add hero photos in the cms</div></figure>';
     return;
   }
- 
+
   const escapeAttr = s => String(s || '').replace(/"/g, '&quot;').replace(/</g, '&lt;');
   const mapsUrl = info.address
     ? 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(info.address)
     : '#';
   const igUrl = info.instagram_url
     || (info.instagram_handle ? 'https://instagram.com/' + info.instagram_handle.replace(/^@/, '') : '#');
-  const mailUrl = info.email ? 'mailto:' + info.email : '#';
- 
+
   const overlayHTML = `
     <div class="info-overlay">
       <span>${info.hours || ''}</span>
@@ -36,9 +37,9 @@
       <span><a href="${escapeAttr(igUrl)}" target="_blank" rel="noopener">${info.instagram_handle || ''}</a></span>
     </div>
   `;
- 
+
   const normalizeSrc = s => (s || '').replace(/^\//, '');
- 
+
   function renderBlock(withOverlay) {
     const frag = document.createDocumentFragment();
     images.forEach((img, i) => {
@@ -57,32 +58,57 @@
     });
     scroll.appendChild(frag);
   }
- 
-  renderBlock(true);
-  renderBlock(false);
-  renderBlock(false);
- 
-  let appending = false;
-  function maybeAppend() {
-    if (appending) return;
-    const distFromBottom = document.documentElement.scrollHeight - (window.scrollY + window.innerHeight);
-    if (distFromBottom < window.innerHeight * 1.5) {
-      appending = true;
-      renderBlock(false);
-      if (scroll.children.length > images.length * 50) {
-        const first = scroll.firstElementChild;
-        const removedH = first ? first.getBoundingClientRect().height * images.length : 0;
-        for (let i = 0; i < images.length && scroll.firstElementChild; i++) {
-          scroll.removeChild(scroll.firstElementChild);
-        }
-        window.scrollTo({ top: window.scrollY - removedH, behavior: 'auto' });
-      }
-      requestAnimationFrame(() => { appending = false; });
+
+  // Three sets — DOM is fixed size, scroll loops via JS
+  renderBlock(true);   // set 1 (carries the info overlay)
+  renderBlock(false);  // set 2
+  renderBlock(false);  // set 3
+
+  // ---------- 30% snap threshold + seamless loop ----------
+  const N = images.length;
+  const vh = () => window.innerHeight;
+  const setH = () => N * vh();
+
+  let snapAnchorY = 0;
+  let isScrolling = false;
+  let snapTimer = null;
+  let lockWrap = false;
+
+  function wrapIfNeeded() {
+    if (lockWrap) return;
+    const y = window.scrollY;
+    // When the user has crossed into the third set, jump back by one set.
+    // Visually identical (same image at same offset), DOM unchanged.
+    if (y >= setH() * 2) {
+      lockWrap = true;
+      window.scrollTo({ top: y - setH(), behavior: 'instant' });
+      snapAnchorY -= setH();
+      requestAnimationFrame(() => { lockWrap = false; });
     }
   }
- 
-  window.addEventListener('scroll', maybeAppend, { passive: true });
-  window.addEventListener('resize', maybeAppend);
-  setTimeout(maybeAppend, 300);
-  setTimeout(maybeAppend, 1200);
+
+  function onScroll() {
+    if (lockWrap) return;
+    if (!isScrolling) {
+      // Lock in the starting position at the beginning of a gesture
+      snapAnchorY = Math.round(window.scrollY / vh()) * vh();
+      isScrolling = true;
+    }
+    clearTimeout(snapTimer);
+    snapTimer = setTimeout(() => {
+      isScrolling = false;
+      wrapIfNeeded();
+      const y = window.scrollY;
+      const delta = y - snapAnchorY;
+      const threshold = vh() * 0.3;  // 30%: change here if you want it more/less eager
+      let target = snapAnchorY;
+      if (delta > threshold) target = snapAnchorY + vh();
+      else if (delta < -threshold) target = snapAnchorY - vh();
+      if (Math.abs(target - y) > 1) {
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      }
+    }, 120);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
